@@ -54,5 +54,11 @@ public class MyMapTest {
         assertTrue(myMap.isEmpty());
     }
 
-
+    @Test
+    public void removeTest() {
+        myMap.put("String2", 2);
+        myMap.remove("String");
+        int expected = 1, actual = myMap.size();
+        assertEquals(expected, actual);
+    }
 }

@@ -104,4 +104,23 @@ public class MyMap<K, V> {
         size = 0;
     }
 
+    public V remove(K key){
+        MyMapNode<K,V> currentNode = start;
+        MyMapNode<K,V> previousNode = start;
+        while(!currentNode.getKey().equals(key)){
+            if(currentNode.getNext() == null){
+                return null;
+            } else {
+                previousNode = currentNode;
+                currentNode = currentNode.getNext();
+            }
+        }//actual removing done below
+        if(currentNode == start){
+            start = start.getNext();
+        } else {
+            previousNode.setNext(currentNode.getNext());
+        }
+        size--;
+        return currentNode.getValue();
+    }
 }

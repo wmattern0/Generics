@@ -1,6 +1,8 @@
 package mattern.william;
 
 
+import java.util.Arrays;
+
 public class MyArrayList<T> {
     private Object[] data;
     private int size;
@@ -13,9 +15,13 @@ public class MyArrayList<T> {
         data = new Object[DEFAULT_SIZE];
     }
 
-    public MyArrayList(int initialSize){
-        size = 0;
-        data = new Object[initialSize];
+    public MyArrayList(int initialSize) throws IndexOutOfBoundsException{
+        if (initialSize > 0) {
+            size = 0;
+            data = new Object[initialSize];
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     public boolean isEmpty(){
@@ -31,12 +37,14 @@ public class MyArrayList<T> {
     private void grow(int minimumSize){
         if(data == EMPTY_DATA_ARRAY){
             data = new Object[DEFAULT_SIZE];
+        } else {
+            Arrays.copyOf(data, minimumSize);
         }
     }
 
     public void add(T t){
-        ensureCapacity(size++);
-        return;
+        ensureCapacity(size + 1);
+        data[size++] = t;
     }
 
     public void add(int index, T t){
@@ -49,11 +57,20 @@ public class MyArrayList<T> {
     }
 
     public T get(int index){
-        return null;
+        return (T)data[index];
     }
 
     public void set(int index, T t){
-        return;
+        if(index > 0){
+            if(index > size) {
+                ensureCapacity(index);
+                data[index] = t;
+            } else {
+                data[index] = t;
+            }
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     public void clear(){
@@ -63,6 +80,11 @@ public class MyArrayList<T> {
     }
 
     public boolean contains(T t){
+        for (Object dataItem: data){
+            if(t.equals((T)dataItem)){
+                return true;
+            }
+        }
         return false;
     }
 }

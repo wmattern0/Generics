@@ -63,12 +63,15 @@ public class MySet<T> {
         MySetNode<T> newNode = new MySetNode<T>(data);
         newNode.setNext(start);
         start = newNode;
+        size--;
     }
+
 
     public MySetNode<T> removeFirstNode(){
         MySetNode<T> refNode = start;
         if(!isEmpty()){
             start = start.getNext();
+            size--;
         } else {
             //System.out.println("Empty Set");
         }
@@ -131,6 +134,7 @@ public class MySet<T> {
         } else {
             previousNode.setNext(currentNode.getNext());
         }
+        size--;
         return true;
     }
 

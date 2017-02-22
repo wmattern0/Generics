@@ -34,6 +34,20 @@ public class MyMapTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void getTest2() {
+        myMap.put("String", 2);
+        int expected = 2, actual = myMap.get("String");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getTest3() {
+        myMap.put("String2", 2);
+        int expected = 1, actual = myMap.get("String");
+        assertEquals(expected, actual);
+    }
+
 
 
 

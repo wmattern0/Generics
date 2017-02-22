@@ -69,7 +69,15 @@ public class MyMap<K, V> {
     }
 
     public V put(K key, V value){
-        return putFirstNode(key, value);
+        MyMapNode<K,V> theNode = findMyMapNode(key);
+        if(theNode!=null){
+            if(!theNode.getValue().equals(value)){
+                theNode.setValue(value);
+            }
+            return value;
+        } else {
+            return putFirstNode(key, value);
+        }
     }
 
     private MyMapNode<K,V> findMyMapNode(K key){
@@ -83,7 +91,7 @@ public class MyMap<K, V> {
                 }
             }
         } else {
-            System.out.println("Empty Map");
+            //System.out.println("Empty Map");
         }
         return theNode;
     }

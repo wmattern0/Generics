@@ -1,6 +1,8 @@
 package mattern.william;
 
-public class MyMap {
+public class MyMap<K, V> {
+
+
 
 
 

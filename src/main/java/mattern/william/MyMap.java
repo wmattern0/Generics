@@ -64,6 +64,9 @@ public class MyMap<K, V> {
     }
 
     public V get(K key){
+        if(isEmpty()){
+            throw new NullPointerException();
+        }
         MyMapNode theNode = findMyMapNode(key);
         return (V)theNode.getValue();
     }
@@ -94,6 +97,11 @@ public class MyMap<K, V> {
             //System.out.println("Empty Map");
         }
         return theNode;
+    }
+
+    public void clear(){
+        start = null;
+        size = 0;
     }
 
 }

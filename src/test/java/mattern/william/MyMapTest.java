@@ -48,7 +48,11 @@ public class MyMapTest {
         assertEquals(expected, actual);
     }
 
-
+    @Test
+    public void clearTest() throws Exception{
+        myMap.clear();
+        assertTrue(myMap.isEmpty());
+    }
 
 
 }

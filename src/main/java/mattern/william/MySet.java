@@ -6,7 +6,7 @@ package mattern.william;
 public class MySet<T> {
     protected MySetNode<T> start;
     protected MySetNode<T> end;
-    public int size;
+    protected int size;
 
     public MySet(){
         start = null;
@@ -23,7 +23,7 @@ public class MySet<T> {
         return size;
     }
 
-    public void insertFirstNode(T data){
+    private void insertFirstNode(T data){
         MySetNode<T> newNode = new MySetNode<T>(data);
         newNode.setNext(start);
         start = newNode;
@@ -34,12 +34,12 @@ public class MySet<T> {
         if(!isEmpty()){
             start = start.getNext();
         } else {
-            System.out.println("Empty Set");
+            //System.out.println("Empty Set");
         }
         return refNode;
     }
 
-    public MySetNode<T> findSetNode(T t){
+    private MySetNode<T> findSetNode(T t){
         MySetNode<T> refNode = start;
 
         if(!isEmpty()){
@@ -51,7 +51,7 @@ public class MySet<T> {
                 }
             }
         } else {
-            System.out.println("Empty Set");
+            //System.out.println("Empty Set");
         }
         return refNode;
     }
@@ -64,6 +64,17 @@ public class MySet<T> {
     }
 
     public boolean add(T t){
-        return false;
+        if(contains(t)) {
+            return false;
+        } else {
+            insertFirstNode(t);
+            size++;
+            return true;
+        }
+    }
+
+    public void clear(){
+        this.start = null;
+        this.size = 0;
     }
 }

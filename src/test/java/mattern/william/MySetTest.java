@@ -14,60 +14,84 @@ public class MySetTest {
     @Before
     public void setUp(){
         mySet = new MySet<String>();
+        mySet.add("Hello");
     }
 
     @Test
-    public void isEmptyTestTrue(){
-        assertTrue(mySet.isEmpty());
+    public void isEmptyTestFalse()   {
+        assertFalse(mySet.isEmpty());
     }
 
     @Test
-    public void isEmptyTestFalse() throws Exception {
-
+    public void sizeTest1()   {
+        int expected = 1, actual = mySet.size();
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void sizeTest0() throws Exception {
-
-    }
-
-    @Test
-    public void sizeTest1() throws Exception {
-
-    }
-
-    @Test
-    public void addTestTrue() throws Exception {
+    public void sizeTest2()   {
+        mySet.add("World");
+        int expected = 2, actual = mySet.size();
+        assertEquals(expected, actual);
 
     }
 
     @Test
-    public void addTestFalse() throws Exception {
+    public void addTestTrue()   {
+        assertTrue(mySet.add("World"));
+        int expected = 2, actual = mySet.size();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addTestFalse()   {
+        assertFalse(mySet.add("Hello"));
+        int expected = 1, actual = mySet.size();
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void containsTest()   {
+        assertTrue(mySet.contains("Hello"));
+    }
+
+    @Test
+    public void clearTest()   {
+        mySet.clear();
+        assertFalse(mySet.contains("Hello"));
+        int expected = 0, actual = mySet.size();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeTest1()   {
 
     }
 
     @Test
-    public void insertFirstNodeTest() throws Exception {
+    public void removeTest2()   {
 
     }
 
     @Test
-    public void removeFirstNodeTest() throws Exception {
+    public void removeTest3()   {
 
     }
 
     @Test
-    public void findSetNodeTest() throws Exception {
+    public void equalsTest1()   {
 
     }
 
     @Test
-    public void containsTest() throws Exception {
+    public void equalsTest2()   {
 
     }
 
     @Test
-    public void clearTest() throws Exception {
+    public void toArrayTest()   {
 
     }
+
 }

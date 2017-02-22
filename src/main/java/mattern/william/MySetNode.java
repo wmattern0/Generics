@@ -12,6 +12,11 @@ public class MySetNode<T> {
         this.data = null;
     }
 
+    public MySetNode(T data){
+        this.data = data;
+        this.next = null;
+    }
+
     public MySetNode(T data, MySetNode next){
         this.data = data;
         this.next = next;

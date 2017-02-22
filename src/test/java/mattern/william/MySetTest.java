@@ -66,32 +66,28 @@ public class MySetTest {
 
     @Test
     public void removeTest1()   {
-
+        mySet.add("Cool");
+        mySet.add("World");
+        assertTrue(mySet.remove("Hello"));
+        String expected = "World, Cool", actual = mySet.toString();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void removeTest2()   {
-
+        mySet.add("Cool");
+        mySet.add("World");
+        assertTrue(mySet.remove("Cool"));
+        String expected = "World, Hello", actual = mySet.toString();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void removeTest3()   {
-
+        mySet.add("Cool");
+        mySet.add("World");
+        assertTrue(mySet.remove("World"));
+        String expected = "Cool, Hello", actual = mySet.toString();
+        assertEquals(expected, actual);
     }
-
-    @Test
-    public void equalsTest1()   {
-
-    }
-
-    @Test
-    public void equalsTest2()   {
-
-    }
-
-    @Test
-    public void toArrayTest()   {
-
-    }
-
 }

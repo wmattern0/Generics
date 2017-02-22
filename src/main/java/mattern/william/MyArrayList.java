@@ -53,7 +53,25 @@ public class MyArrayList<T> {
     }
 
     public T remove(int index){
-        return null;
+        Object temp;
+        if(index == 0){
+            temp = data[index];
+            System.arraycopy(data,1,data,0,size-1);
+            size--;
+        } else if (index == size){
+            temp = data[index];
+            data[index] = null;
+            size--;
+        } else {
+            if(index < 0){
+                throw new IndexOutOfBoundsException();
+            }
+            temp = data[index];
+            int numMoved = (size -1) - index;
+            System.arraycopy(data,index + 1, data, index, numMoved);
+            size--;
+        }
+        return (T)temp;
     }
 
     public T get(int index){
@@ -86,5 +104,22 @@ public class MyArrayList<T> {
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder out = new StringBuilder();
+        for(int i = 0; i < size; i++) {
+            if(i == size-1) {
+                out.append(data[i].toString());
+            } else {
+                out.append(data[i].toString()).append(", ");
+            }
+        }
+        return out.toString();
+    }
+
+    public int size(){
+        return size;
     }
 }

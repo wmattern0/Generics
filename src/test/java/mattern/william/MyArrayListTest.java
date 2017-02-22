@@ -25,7 +25,6 @@ public class MyArrayListTest {
         MyArrayList<String> testList2 = new MyArrayList<String>(-1);
     }
 
-
     @Test
     public void addTest1(){
         testList.add("Ghostbusters");
@@ -61,5 +60,35 @@ public class MyArrayListTest {
     @Test
     public void containsTest(){
         assertTrue(testList.contains("Ghostbusters"));
+    }
+
+    @Test
+    public void containsTestFalse(){
+        assertFalse(testList.contains("HTTP"));
+    }
+
+    @Test
+    public void toStringTest(){
+        testList.add("Slim Shady");
+        String actual = testList.toString(), expected = "Ghostbusters, Slim Shady";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeTest(){
+        testList.add("Slim Shady");
+        testList.remove(0);
+        String actual = testList.toString(), expected = "Slim Shady";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeMiddleTest(){
+        testList.add("Slim Shady");
+        testList.add("John Lennon");
+        testList.remove(1);
+        String actual = testList.toString(), expected = "Ghostbusters, John Lennon";
+        assertEquals(expected, actual);
+        assertEquals(2, testList.size());
     }
 }

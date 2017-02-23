@@ -3,6 +3,8 @@ package mattern.william;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -89,5 +91,21 @@ public class MySetTest {
         assertTrue(mySet.remove("World"));
         String expected = "Cool, Hello", actual = mySet.toString();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addAllTest()   {
+        String e = "empire", s = "strikes", b = "back";
+        ArrayList<String> esb = new ArrayList<String>();
+        esb.add(e);
+        esb.add(s);
+        esb.add(b);
+        esb.add(b);
+        esb.add(b);
+        esb.add(b);
+        boolean bActual = mySet.addAll(esb);
+        String expected = "back, strikes, empire, Hello", actual = mySet.toString();
+        assertEquals(expected, actual);
+        assertFalse(bActual);
     }
 }

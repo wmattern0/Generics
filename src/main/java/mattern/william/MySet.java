@@ -1,5 +1,7 @@
 package mattern.william;
 
+import java.util.Collection;
+
 /**
  * Created by williammattern on 2/22/17.
  */
@@ -63,7 +65,7 @@ public class MySet<T> {
         MySetNode<T> newNode = new MySetNode<T>(data);
         newNode.setNext(start);
         start = newNode;
-        size--;
+        size++;
     }
 
 
@@ -107,9 +109,18 @@ public class MySet<T> {
             return false;
         } else {
             insertFirstNode(t);
-            size++;
             return true;
         }
+    }
+
+    public boolean addAll(Collection<? extends T> c){
+        boolean result = true;
+        for (T t:c) {
+            if(add(t) == false){
+                result = false;
+            }
+        }
+        return result;
     }
 
     public void clear(){
@@ -137,6 +148,8 @@ public class MySet<T> {
         size--;
         return true;
     }
+
+
 
     @Override
     public String toString() {

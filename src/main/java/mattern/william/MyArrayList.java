@@ -1,6 +1,7 @@
 package mattern.william;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyArrayList<T> {
@@ -48,7 +49,23 @@ public class MyArrayList<T> {
     }
 
     public void add(int index, T t){
-        this.set(index, t);
+        if(index > 0){
+            if(index > size) {
+                throw new IndexOutOfBoundsException();
+            } else {
+                if(index == size +1){
+                    add(t);
+                } else {
+                    ensureCapacity(size + 1);
+                    int numMoved = size  - index;
+                    System.arraycopy(data, index, data, index + 1, numMoved);
+                    data[index] = t;
+                    size++;
+                }
+            }
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
         return;
     }
 

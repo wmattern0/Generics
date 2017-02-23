@@ -46,8 +46,16 @@ public class MyArrayListTest {
 
     @Test
     public void addTest2(){
-        testList.add(4, "Slim Shady");
-        String actual = testList.get(4), expected = "Slim Shady";
+        testList.add(1, "Slim Shady");
+        String actual = testList.get(1), expected = "Slim Shady";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addTestLineCutter(){
+        testList.add("Star Wars");
+        testList.add(1, "Slim Shady");
+        String actual = testList.get(2), expected = "Star Wars";
         assertEquals(expected, actual);
     }
 
